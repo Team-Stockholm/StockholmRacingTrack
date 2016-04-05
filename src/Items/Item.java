@@ -12,7 +12,8 @@ public abstract class Item {
     public int getxCoordinate() {
         return xCoordinate;
     }
-    public  void setxCoordinate(int xCoordinate) {
+
+    public void setxCoordinate(int xCoordinate) {
         this.xCoordinate = xCoordinate;
     }
 

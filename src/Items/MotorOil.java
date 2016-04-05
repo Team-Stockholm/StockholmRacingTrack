@@ -1,6 +1,6 @@
 package Items;
 
-public class MotorOil extends ExtraPoints{
+public class MotorOil extends ExtraPoints {
     private int xCoordinate;
     private int yCoordinate;
     private int healthPoints;

@@ -1,6 +1,6 @@
 package Items;
 
-public abstract class Obstacle extends Item{
+public abstract class Obstacle extends Item {
     private int xCoordinate;
     private int yCoordinate;
     private int damage;
@@ -13,7 +13,8 @@ public abstract class Obstacle extends Item{
     public int getDamage() {
         return damage;
     }
-    public  void setDamage(int damage) {
+
+    public void setDamage(int damage) {
         this.damage = damage;
     }
 }
