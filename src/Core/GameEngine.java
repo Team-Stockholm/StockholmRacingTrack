@@ -1,5 +1,6 @@
 package Core;
 
+        import Display.Display;
         import gfx.SpriteSheet;
         import Vehicles.PlayerCar;
 
@@ -19,12 +20,13 @@ public class GameEngine implements Runnable{
 
     private BufferedImage image;
     private SpriteSheet spriteSheet;
+    private Display display;
 
     //Player
     public static PlayerCar player;
     public static Rectangle enemy;
 
-    public GameEngine(String title, int width, int height) {
+    public GameEngine() {
         this.width = width;
         this.height = height;
         this.title = title;
@@ -33,6 +35,7 @@ public class GameEngine implements Runnable{
     //Initializes all the graphics and it will get
     //everything ready for our game
     private void init() {
+        this.display = new Display("Stockholm");
     }
 
 
