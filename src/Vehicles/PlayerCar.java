@@ -1,5 +1,7 @@
 package Vehicles;
 
+import gfx.Assets;
+
 import java.awt.*;
 
 public class PlayerCar extends Vehicle {
@@ -9,30 +11,31 @@ public class PlayerCar extends Vehicle {
     private int pointsCollected;
     private int numberOfCollisions;
 
-    private int x, y;
-    private int velocity;
     private int width, height;
+    private int x, y;
+    private int velocityX;
+
     private int numberOfLives;
 
     private Rectangle boundingBox;
 
-    public static boolean isGoingLeft;
-    public static boolean isGoingRight;
+    public static boolean isMovingLeft;
+    public static boolean isMovingRight;
 
     private Rectangle playerPosition;
 
-    public PlayerCar(){
+    public PlayerCar(String name, int width, int height, int x, int y){
         // TODO: To be set correctly
-        this.x = 200;
-        this.y = 300;
-        this.width = 95;
-        this.height = 130;
+        this.name = name;
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
+        this.velocityX = 5;
         this.numberOfLives = INITIAL_NUMBER_OF_LIVES;
-        this.velocity = 2;
-        this.boundingBox = new Rectangle(this.width, this.height);
 
-        isGoingLeft = false;
-        isGoingRight = false;
+        this.boundingBox = new Rectangle(x, y, width, height);
+
     }
 
     public String getName(){
@@ -60,29 +63,27 @@ public class PlayerCar extends Vehicle {
     }
 
 
-    public void update() {
+    public void tick() {
         //Update the bounding box's position
-        this.playerPosition.setBounds(this.x, this.y, this.width, this.height);
+        this.boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
-        if(isGoingLeft) {
-            this.x -= this.velocity;
-        }
-        if(isGoingRight) {
-            this.x += this.velocity;
+        if (isMovingLeft) {
+            this.x -= this.velocityX;
+        }else if (isMovingRight) {
+            this.x += this.velocityX;
         }
     }
 
+    // TODO: Implement it correctly!
+    public void render(Graphics graphics) {
+        graphics.drawImage((Assets.player), this.x, this.y, null);
+    }
 
     public boolean Intersects(Rectangle rectangle) {
         if(this.playerPosition.contains(rectangle) || rectangle.contains(this.playerPosition)) {
             return true;
         }
         return false;
-    }
-
-    // TODO: Implement it correctly!
-    public void render(Graphics g) {
-       // g.drawImage(A.player1, this.x, this.y, null);
     }
 }
 

@@ -4,13 +4,17 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet {
 
-    private BufferedImage sheet;
+    private BufferedImage image;
+    private int cropWidth;
+    private int cropHeight;
 
-    public SpriteSheet(BufferedImage sheet) {
-        this.sheet = sheet;
+    public SpriteSheet(BufferedImage image, int cropWidth, int cropHeight) {
+        this.image = image;
+        this.cropWidth = cropWidth;
+        this.cropHeight = cropHeight;
     }
 
     public BufferedImage crop(int x, int y, int width, int height) {
-        return sheet.getSubimage(x, y, width, height);
+        return image.getSubimage(x, y, width, height);
     }
 }

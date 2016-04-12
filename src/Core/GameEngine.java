@@ -1,30 +1,33 @@
 package Core;
 
         import Display.Display;
-        import gfx.SpriteSheet;
-        import Vehicles.PlayerCar;
+        import States.GameState;
+        import States.MainMenuState;
+        import States.StateManager;
+        import gfx.Assets;
+
 
         import java.awt.*;
         import java.awt.image.BufferStrategy;
-        import java.awt.image.BufferedImage;
+
 
 public class GameEngine implements Runnable{
-    public int width, height;
     public String title;
 
-    private boolean running = false;
-    private Thread thread;
-
+    private Display display;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
 
-    private BufferedImage image;
-    private SpriteSheet spriteSheet;
-    private Display display;
+    private Thread thread;
+    private boolean isRunning;
 
-    //Player
-    public static PlayerCar player;
-    public static Rectangle enemy;
+    private GameState gameState;
+    private MainMenuState mainMenuState;
+    private InputHandler inputHandler;
+
+    private int width = 800;
+    private int height = 50;
+    private int i = 1;
 
     public GameEngine() {
         this.width = width;
@@ -36,23 +39,54 @@ public class GameEngine implements Runnable{
     //everything ready for our game
     private void init() {
         this.display = new Display("Stockholm");
+
+        gameState = new GameState();
+        mainMenuState = new MainMenuState();
+        this.inputHandler = new InputHandler(this.display);
+
+        StateManager.setCurrentState(gameState);
     }
 
 
     //The method that will update all the variables
-    private void update() {
-
+    private void tick() {
+        i++;
+        if (i >= 23){
+            i = 1;
+        }
+        if (StateManager.getCurrentState() != null){
+            StateManager.getCurrentState().tick();
+        }
     }
 
     //The method that will draw everything on the canvas
     private void render() {
+        this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
 
+        if (this.bufferStrategy == null){
+            this.display.getCanvas().createBufferStrategy(2);
+            return;
+        }
+
+        this.graphics = this.bufferStrategy.getDrawGraphics();
+
+        graphics.clearRect(0, 0, Display.WIDTH, Display.HEIGHT);
+
+        //start drawing
+        graphics.drawImage((Assets.background), 0, height - (height * i), null);
+
+        if (StateManager.getCurrentState() != null){
+            StateManager.getCurrentState().render(graphics);
+        }
+        //end drawing
+        this.graphics.dispose();
+        this.bufferStrategy.show();
     }
 
     //Implementing the interface's method
     @Override
     public void run() {
-        init();
+        this.init();
 
         int fps = 30;
         double timePerTick = 1_000_000_000.0 / fps;
@@ -63,14 +97,14 @@ public class GameEngine implements Runnable{
         long timer = 0;
         int ticks = 0;
 
-        while (running) {
+        while (isRunning) {
             now = System.nanoTime();
             delta += (now-lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
 
             if (delta >= 1) {
-                this.update();
+                this.tick();
                 this.render();
 
                 ticks++;
@@ -89,25 +123,22 @@ public class GameEngine implements Runnable{
 
 
     public synchronized void start() {
-        if(running) {
-            return;
-        }
+        if (!isRunning){
+            this.thread = new Thread(this);
+            this.isRunning = true;
 
-        running = true;
-        thread = new Thread(this);
-        thread.start();
+            this.thread.start();
+        }
     }
 
     public synchronized void stop() {
-        if(!running) {
-            return;
-        }
-        running = false;
-
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (isRunning){
+            try {
+                this.isRunning = false;
+                this.thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
