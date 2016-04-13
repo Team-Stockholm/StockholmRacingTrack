@@ -34,9 +34,9 @@ public class InputHandler implements KeyListener{
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_RIGHT){
-            GameState.player.isMovingRight = true;
+            GameState.player.isMovingRight = false;
         }else if (keyCode == KeyEvent.VK_LEFT){
-            GameState.player.isMovingLeft = true;
+            GameState.player.isMovingLeft = false;
         }
     }
 }
