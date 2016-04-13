@@ -38,11 +38,10 @@ public class GameEngine implements Runnable{
     //everything ready for our game
     private void init() {
         this.display = new Display("Stockholm");
+        this.inputHandler = new InputHandler(this.display);
 
         gameState = new GameState();
         mainMenuState = new MainMenuState();
-        this.inputHandler = new InputHandler(this.display);
-
         StateManager.setCurrentState(gameState);
         mapInitiliazer = new MapInitiliazer();
     }

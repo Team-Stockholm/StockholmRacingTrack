@@ -30,8 +30,8 @@ public class GameState extends State{
 
     @Override
     public void tick() {
-        player.tick();
 
+        player.tick();
         List<GameObject> vehicles = this.entities.stream().filter(i->i instanceof Opponent).collect(Collectors.toList());
         List<GameObject> items = this.entities.stream().filter(i->i instanceof ExtraPoints).collect(Collectors.toList());
         if (vehicles.size() == 0)        {
@@ -43,6 +43,10 @@ public class GameState extends State{
 
         for (GameObject vehicle : this.entities) {
             vehicle.setyCoord(vehicle.getyCoord() + 3);
+        }
+
+        if (entities.stream().allMatch(y->y.getyCoord() > 800)){
+            entities.clear();
         }
 
     }

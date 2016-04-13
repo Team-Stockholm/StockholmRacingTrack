@@ -11,8 +11,8 @@ import java.util.Random;
 
 public class MapInitiliazer {
     private static Random Rand = new Random();
-    private final int NUMBER_OF_VEHICLES = 2;
-    private final int NUMBER_OF_ITEMS = 1;
+    private final int NUMBER_OF_VEHICLES = 4;
+    private final int NUMBER_OF_ITEMS = 3;
     private final int MAP_WIDTH = 500;
     private final int HEIGHT = 400;
     private final int MIN_LENGTH = 100;
