@@ -1,5 +1,6 @@
 package Vehicles;
 
+import Core.GameEngine;
 import gfx.Assets;
 
 import java.awt.*;
@@ -24,11 +25,13 @@ public class PlayerCar extends Vehicle {
 
     private Rectangle playerPosition;
 
-    public PlayerCar(String name, int width, int height, int x, int y){
-        // TODO: To be set correctly
+    public PlayerCar(String name, int width, int height, int xCoord, int yCoord){
+        super(xCoord, yCoord);
         this.name = name;
         this.width = width;
         this.height = height;
+        setxCoord(xCoord);
+        setyCoord(yCoord);
         this.x = x;
         this.y = y;
         this.velocityX = 5;
@@ -74,9 +77,8 @@ public class PlayerCar extends Vehicle {
         }
     }
 
-    // TODO: Implement it correctly!
     public void render(Graphics graphics) {
-        graphics.drawImage((Assets.player), this.x, this.y, null);
+        graphics.drawImage((Assets.player), this.getxCoord(), this.getyCoord(), null);
     }
 
     public boolean Intersects(Rectangle rectangle) {

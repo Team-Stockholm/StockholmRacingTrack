@@ -5,8 +5,6 @@ package Core;
         import States.MainMenuState;
         import States.StateManager;
         import gfx.Assets;
-
-
         import java.awt.*;
         import java.awt.image.BufferStrategy;
 
@@ -17,6 +15,7 @@ public class GameEngine implements Runnable{
     private Display display;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
+    private MapInitiliazer mapInitiliazer;
 
     private Thread thread;
     private boolean isRunning;
@@ -27,7 +26,7 @@ public class GameEngine implements Runnable{
 
     private int width = 800;
     private int height = 50;
-    private int i = 1;
+    public int i = 1;
 
     public GameEngine() {
         this.width = width;
@@ -45,6 +44,7 @@ public class GameEngine implements Runnable{
         this.inputHandler = new InputHandler(this.display);
 
         StateManager.setCurrentState(gameState);
+        mapInitiliazer = new MapInitiliazer();
     }
 
 
@@ -126,7 +126,6 @@ public class GameEngine implements Runnable{
         if (!isRunning){
             this.thread = new Thread(this);
             this.isRunning = true;
-
             this.thread.start();
         }
     }

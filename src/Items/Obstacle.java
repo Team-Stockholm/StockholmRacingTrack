@@ -1,12 +1,12 @@
 package Items;
 
-public abstract class Obstacle extends Item {
-    private int xCoordinate;
-    private int yCoordinate;
+import Vehicles.GameObject;
+
+public abstract class Obstacle extends GameObject {
     private int damage;
 
-    public Obstacle(int xCoordinate, int yCoordinate, int damage) {
-        super(xCoordinate, yCoordinate);
+    public Obstacle(int xCoord, int yCoord) {
+        super(xCoord, yCoord);
         this.damage = damage;
     }
 
