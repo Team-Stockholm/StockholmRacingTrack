@@ -3,12 +3,12 @@ package Items;
 import Vehicles.GameObject;
 
 public abstract class ExtraPoints extends GameObject {
-    private int xCoordinate;
-    private int yCoordinate;
+    private int xCoord;
+    private int yCoord;
     private int healthPoints;
 
-    public ExtraPoints(int xCoordinate, int yCoordinate) {
-        super(xCoordinate, yCoordinate);
+    public ExtraPoints(int xCoord, int yCoord) {
+        super(xCoord, yCoord);
     }
 
     public int getHealthPoints() {

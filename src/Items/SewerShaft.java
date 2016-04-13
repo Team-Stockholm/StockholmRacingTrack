@@ -1,10 +1,12 @@
 package Items;
 
+import gfx.Assets;
+
 import java.awt.*;
 
 public class SewerShaft extends Obstacle {
-    private int xCoordinate;
-    private int yCoordinate;
+    private int xCoord;
+    private int yCoord;
     private int damage;
 
     public SewerShaft(int xCoord, int yCoord) {
@@ -14,6 +16,6 @@ public class SewerShaft extends Obstacle {
 
     @Override
     public void render(Graphics graphics) {
-
+        graphics.drawImage((Assets.sewerShaft), this.getxCoord(), this.getyCoord(), null);
     }
 }

@@ -4,18 +4,18 @@ import gfx.Assets;
 
 import java.awt.*;
 
-public class Gas extends ExtraPoints {
+public class Wrench extends ExtraPoints{
     private int xCoord;
     private int yCoord;
     private int healthPoints;
 
-    public Gas(int xCoord, int yCoord) {
+    public Wrench(int xCoord, int yCoord) {
         super(xCoord, yCoord);
         this.healthPoints = 50;
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage((Assets.gas), this.getxCoord(), this.getyCoord(), null);
+        graphics.drawImage((Assets.wrench), this.getxCoord(), this.getyCoord(), null);
     }
 }
