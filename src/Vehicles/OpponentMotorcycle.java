@@ -1,5 +1,7 @@
 package Vehicles;
 
+import gfx.Assets;
+
 import java.awt.*;
 
 public class OpponentMotorcycle extends Opponent{
@@ -9,6 +11,6 @@ public class OpponentMotorcycle extends Opponent{
 
     @Override
     public void render(Graphics graphics) {
-
+        graphics.drawImage((Assets.opponentMotorcycle), this.getxCoord(), this.getyCoord(), null);
     }
 }

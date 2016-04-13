@@ -10,6 +10,7 @@ public class OpponentCar extends Opponent{
         super(xCoord,yCoord);
     }
 
+    @Override
     public void render(Graphics graphics) {
         graphics.drawImage((Assets.opponentCar), this.getxCoord(), this.getyCoord(), null);
     }
