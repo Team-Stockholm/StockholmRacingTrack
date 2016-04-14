@@ -37,7 +37,7 @@ public class GameEngine implements Runnable{
     //Initializes all the graphics and it will get
     //everything ready for our game
     private void init() {
-        this.display = new Display("Stockholm");
+        this.display = new Display("Stockholm Racing track");
         this.inputHandler = new InputHandler(this.display);
 
         gameState = new GameState();
@@ -73,6 +73,10 @@ public class GameEngine implements Runnable{
 
         //start drawing
         graphics.drawImage((Assets.background), 0, height - (height * i), null);
+        graphics.drawImage((Assets.logo), 70, 150, null);
+        graphics.drawImage((Assets.titleLives), 610, 500, null);
+        graphics.drawImage((Assets.titleScores), 590, 400, null);
+//        graphics.
 
         if (StateManager.getCurrentState() != null){
             StateManager.getCurrentState().render(graphics);

@@ -17,10 +17,12 @@ public class Assets {
     public static BufferedImage sewerShaft;
     public static BufferedImage wrench;
     public static BufferedImage startScreen;
-    public static BufferedImage titles;
+    public static BufferedImage logo;
+    public static BufferedImage titleLives;
+    public static BufferedImage titleScores;
 
     public static void init(){
-        background = ImageLoader.loadImage("/Background.png");
+        background = ImageLoader.loadImage("/BackgroundCorr.png");
         player = ImageLoader.loadImage("/player.png");
         opponentCar = ImageLoader.loadImage("/enemy car.png");
         opponentTruck = ImageLoader.loadImage("/enemy bus.png");
@@ -31,6 +33,8 @@ public class Assets {
         sewerShaft = ImageLoader.loadImage("/shaft.png");
         wrench = ImageLoader.loadImage("/wrench.png");
         startScreen = ImageLoader.loadImage("/startScreen.png");
-        titles = ImageLoader.loadImage("/titles.png");
+        logo = ImageLoader.loadImage("/logoLeft.png");
+        titleLives = ImageLoader.loadImage("/titleLives.png");
+        titleScores = ImageLoader.loadImage("/titleScores.png");
     }
 }
