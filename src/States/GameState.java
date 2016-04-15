@@ -19,7 +19,7 @@ public class GameState extends State{
 
     public GameState(){
         init();
-        player = new PlayerCar("player", 31, 62, 330, 350);
+        player = new PlayerCar("player", 31, 62, 385, 450);
         map = new MapInitiliazer();
         this.entities = map.PopulateMap();
     }
