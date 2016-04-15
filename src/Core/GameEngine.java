@@ -26,7 +26,7 @@ public class GameEngine implements Runnable{
 
     private int width = 800;
     private int height = 50;
-    public int i = 1;
+    public int i = 23;
 
     public GameEngine() {
         this.width = width;
@@ -49,9 +49,9 @@ public class GameEngine implements Runnable{
 
     //The method that will update all the variables
     private void tick() {
-        i++;
-        if (i >= 23){
-            i = 1;
+        i--;
+        if (i <= 1){
+            i = 23;
         }
         if (StateManager.getCurrentState() != null){
             StateManager.getCurrentState().tick();
