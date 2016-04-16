@@ -11,8 +11,8 @@ public abstract class Opponent extends Vehicle{
     private int damageCaused;
     private BufferedImage image;
 
-    public Opponent(int xCoord, int yCoord){
-        super(xCoord, yCoord);
+    public Opponent(int xCoord, int yCoord, BufferedImage image){
+        super(xCoord, yCoord, image);
     }
 
     public int getDamageCaused() {

@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class OpponentMotorcycle extends Opponent{
     public OpponentMotorcycle(int xCoord, int yCoord) {
-        super(xCoord, yCoord);
+        super(xCoord, yCoord, Assets.opponentCar);
     }
 
     @Override

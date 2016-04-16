@@ -2,11 +2,13 @@ package Items;
 
 import Vehicles.GameObject;
 
-public abstract class Obstacle extends GameObject {
+import java.awt.image.BufferedImage;
+
+public abstract class Obstacle extends Item {
     private int damage;
 
-    public Obstacle(int xCoord, int yCoord) {
-        super(xCoord, yCoord);
+    public Obstacle(int xCoord, int yCoord, BufferedImage image) {
+        super(xCoord, yCoord, image);
         this.damage = damage;
     }
 

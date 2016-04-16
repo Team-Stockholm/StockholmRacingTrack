@@ -10,7 +10,7 @@ public class Wrench extends ExtraPoints{
     private int healthPoints;
 
     public Wrench(int xCoord, int yCoord) {
-        super(xCoord, yCoord);
+        super(xCoord, yCoord, Assets.wrench);
         this.healthPoints = 50;
     }
 

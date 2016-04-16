@@ -1,13 +1,14 @@
 package Vehicles;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 
 public class Vehicle extends GameObject {
     private Rectangle rectangle;
 
-    public Vehicle(int xCoord, int yCoord) {
-        super(xCoord, yCoord);
+    public Vehicle(int xCoord, int yCoord, BufferedImage image) {
+        super(xCoord, yCoord, image);
     }
 
     public Rectangle getRectangle(){
@@ -21,5 +22,4 @@ public class Vehicle extends GameObject {
    public void render(Graphics graphics){
 
    }
-
 }
