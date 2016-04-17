@@ -3,6 +3,8 @@ package Core;
 
 import Display.Display;
 import States.GameState;
+import States.State;
+import States.StateManager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,6 +13,7 @@ public class InputHandler implements KeyListener{
 
     public InputHandler(Display display) {
         display.getCanvas().addKeyListener(this);
+
     }
 
     @Override
@@ -26,6 +29,10 @@ public class InputHandler implements KeyListener{
             GameState.player.isMovingRight = true;
         }else if (keyCode == KeyEvent.VK_LEFT){
             GameState.player.isMovingLeft = true;
+        }else if (keyCode == KeyEvent.VK_SPACE) {
+            if (StateManager.getCurrentState().toString().contains("MainMenuState")) {
+                StateManager.setCurrentState(new GameState());
+            }
         }
     }
 

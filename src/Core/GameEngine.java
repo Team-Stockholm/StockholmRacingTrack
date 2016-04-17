@@ -42,7 +42,7 @@ public class GameEngine implements Runnable{
 
         gameState = new GameState();
         mainMenuState = new MainMenuState();
-        StateManager.setCurrentState(gameState);
+        StateManager.setCurrentState(mainMenuState);
         mapInitiliazer = new MapInitiliazer();
     }
 
