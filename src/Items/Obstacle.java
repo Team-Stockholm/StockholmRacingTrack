@@ -9,7 +9,7 @@ public abstract class Obstacle extends Item {
 
     public Obstacle(int xCoord, int yCoord, BufferedImage image) {
         super(xCoord, yCoord, image);
-        this.damage = damage;
+        this.damage = 200;
     }
 
     public int getDamage() {

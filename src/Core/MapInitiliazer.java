@@ -3,6 +3,7 @@ package Core;
 import Items.Gas;
 import Items.MotorOil;
 import Items.SewerShaft;
+import Items.Wrench;
 import Vehicles.*;
 
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class MapInitiliazer {
         items.add("Gas");
         items.add("MotorOil");
         items.add("SewerShaft");
+        items.add("Wrench");
 
         GameObject vehicle = null;
         for (int i = 0; i <= NUMBER_OF_ITEMS; i++)
@@ -71,6 +73,7 @@ public class MapInitiliazer {
                 case "Gas": vehicle = new Gas(currentXCoord, currentYCoord); break;
                 case "MotorOil" : vehicle = new MotorOil(currentXCoord, currentYCoord); break;
                 case "SewerShaft": vehicle = new SewerShaft(currentXCoord, currentYCoord); break;
+                case "Wrench": vehicle = new Wrench(currentXCoord, currentYCoord); break;
             }
 
             entities.add(vehicle);

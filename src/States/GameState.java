@@ -34,13 +34,13 @@ public class GameState extends State{
     @Override
     public void tick() {
 
-        player.tick();
-        this.collisionHandler.handleCollisions(player, this.entities);
-        List<GameObject> removed = entities.stream().filter(a-> !a.isExists()).collect(Collectors.toList());
+        player.update();
+        this.collisionHandler.handleCollisions(this.player, this.entities);
+        List<GameObject> removed = entities.stream().filter(a-> !a.exists()).collect(Collectors.toList());
         this.entities.removeAll(removed);
-
-        if (!this.player.isExists()){
+        if (!this.player.exists()){
             StateManager.setCurrentState(new GameOverState());
+            System.exit(0);
         } else {
             List<GameObject> vehicles = this.entities.stream().filter(i->i instanceof Opponent).collect(Collectors.toList());
             List<GameObject> items = this.entities.stream().filter(i->i instanceof ExtraPoints).collect(Collectors.toList());
@@ -52,7 +52,7 @@ public class GameState extends State{
             }
 
             for (GameObject vehicle : this.entities) {
-                vehicle.setyCoord(vehicle.getyCoord() + 3);
+                vehicle.update();
             }
 
             if (entities.stream().allMatch(y->y.getyCoord() > 800)){

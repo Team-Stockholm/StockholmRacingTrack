@@ -5,8 +5,6 @@ import Vehicles.GameObject;
 import java.awt.image.BufferedImage;
 
 public abstract class ExtraPoints extends Item {
-    private int xCoord;
-    private int yCoord;
     private int healthPoints;
 
     public ExtraPoints(int xCoord, int yCoord, BufferedImage image) {

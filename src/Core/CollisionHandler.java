@@ -13,13 +13,13 @@ import java.util.List;
 public class CollisionHandler {
     public void handleCollisions(PlayerCar player, List<GameObject> entities)
     {
-        for(Collidable entity : entities)
+        for(GameObject entity : entities)
         {
             if (player.getColliderBox().intersects(entity.getColliderBox()))
             {
+                entity.setExists(false);
                 if (entity instanceof Item)
                 {
-                    ((Item)entity).setExists(false);
                     if (entity instanceof ExtraPoints)
                     {
                         player.setPointsCollected(player.getPointsCollected() + ((ExtraPoints) entity).getHealthPoints());
@@ -31,8 +31,7 @@ public class CollisionHandler {
                 }
                 else if (entity instanceof Opponent)
                 {
-                    player.setNumberOfCollisions(player.getNumberOfCollisions() - 1);
-                    ((Opponent)entity).setExists(false);
+                    player.setNumberOfLives(player.getNumberOfLives() - 1);
                 }
             }
         }

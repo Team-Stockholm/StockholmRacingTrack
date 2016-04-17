@@ -5,13 +5,10 @@ import gfx.Assets;
 import java.awt.*;
 
 public class SewerShaft extends Obstacle {
-    private int xCoord;
-    private int yCoord;
-    private int damage;
 
     public SewerShaft(int xCoord, int yCoord) {
         super(xCoord, yCoord, Assets.sewerShaft);
-        this.damage = 75;
+        this.setDamage(75);
     }
 
     @Override

@@ -5,26 +5,36 @@ import Interfaces.Collidable;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class GameObject implements Collidable {
+public abstract class GameObject{
     private int xCoord;
     private int yCoord;
     private Rectangle colliderBox;
+    private BufferedImage image;
 
-    public boolean isExists() {
+    private boolean exists;
+
+    public GameObject(int xCoord, int yCoord, BufferedImage image){
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
+        this.colliderBox = new Rectangle(this.getxCoord(), this.getyCoord(), image.getWidth(), image.getHeight());
+        this.exists = true;
+        this.image = image;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public boolean exists() {
         return exists;
     }
 
     public void setExists(boolean exists) {
         this.exists = exists;
-    }
-
-    private boolean exists;
-
-    public GameObject(int xCoord, int yCoord, BufferedImage image){
-        setyCoord(yCoord);
-        setxCoord(xCoord);
-        this.colliderBox = new Rectangle(this.getxCoord(), this.getyCoord(), image.getWidth(), image.getHeight());
-        setExists(true);
     }
 
     public int getxCoord() {
@@ -43,8 +53,6 @@ public abstract class GameObject implements Collidable {
         this.yCoord = yCoord;
     }
 
-    public abstract void render(Graphics graphics);
-
     public Rectangle getColliderBox() {
         return this.colliderBox;
     }
@@ -52,4 +60,8 @@ public abstract class GameObject implements Collidable {
     public void setColliderBox(Rectangle colliderBox) {
         this.colliderBox = colliderBox;
     }
+
+    public abstract void render(Graphics graphics);
+
+    public abstract void update();
 }

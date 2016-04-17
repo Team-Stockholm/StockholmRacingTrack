@@ -2,6 +2,7 @@ package Vehicles;
 
 import Core.GameEngine;
 import gfx.Assets;
+import org.omg.CORBA.Environment;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -14,11 +15,12 @@ public class PlayerCar extends Vehicle {
     private int numberOfCollisions;
 
     private int width, height;
-    private int x, y;
+
     private int velocityX;
 
+
+
     private int numberOfLives;
-    private Rectangle colliderBox;
 
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
@@ -30,21 +32,8 @@ public class PlayerCar extends Vehicle {
         this.name = name;
         this.width = width;
         this.height = height;
-        setxCoord(xCoord);
-        setyCoord(yCoord);
         this.velocityX = 5;
         this.numberOfLives = INITIAL_NUMBER_OF_LIVES;
-        setExists(true);
-        //this.boundingBox = new Rectangle(x, y, width, height);
-
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public void setName(String name){
-        this.name = name;
     }
 
     public int getPointsCollected(){
@@ -55,39 +44,30 @@ public class PlayerCar extends Vehicle {
         this.pointsCollected = pointsCollected;
     }
 
-    public int getNumberOfCollisions(){
-        return this.numberOfCollisions;
+    public int getNumberOfLives() {
+        return numberOfLives;
     }
 
-    public void setNumberOfCollisions(int numberOfCollisions){
-        this.numberOfCollisions = numberOfCollisions;
+    public void setNumberOfLives(int numberOfLives) {
+        this.numberOfLives = numberOfLives;
     }
 
-
-    public void tick() {
-        //Update the bounding box's position
-        //this.colliderBox.setBounds(this.getxCoord(), this.getyCoord(), this.width, this.height);
-
+    @Override
+    public void update() {
+        this.getColliderBox().setBounds(this.getxCoord(), this.getyCoord(), this.getImage().getWidth(), this.getImage().getHeight());
         if (isMovingLeft) {
             this.setxCoord(this.getxCoord() - this.velocityX);
         }else if (isMovingRight) {
             this.setxCoord(this.getxCoord() + this.velocityX);
         }
 
-        if (this.getNumberOfCollisions() > 0){
+        if (this.getNumberOfLives() < 0){
             this.setExists(false);
         }
     }
 
     public void render(Graphics graphics) {
         graphics.drawImage((Assets.player), this.getxCoord(), this.getyCoord(), null);
-    }
-
-    public boolean intersects(Rectangle rectangle) {
-        if(this.playerPosition.contains(rectangle) || rectangle.contains(this.playerPosition)) {
-            return true;
-        }
-        return false;
     }
 }
 
