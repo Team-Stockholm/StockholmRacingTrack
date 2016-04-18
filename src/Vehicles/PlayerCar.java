@@ -55,9 +55,9 @@ public class PlayerCar extends Vehicle {
     @Override
     public void update() {
         this.getColliderBox().setBounds(this.getxCoord(), this.getyCoord(), this.getImage().getWidth(), this.getImage().getHeight());
-        if (isMovingLeft) {
+        if (isMovingLeft && this.getxCoord() >= 225) {
             this.setxCoord(this.getxCoord() - this.velocityX);
-        }else if (isMovingRight) {
+        }else if (isMovingRight && this.getxCoord() <= 540) {
             this.setxCoord(this.getxCoord() + this.velocityX);
         }
 
