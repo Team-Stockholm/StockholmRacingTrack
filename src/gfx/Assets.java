@@ -1,8 +1,10 @@
 package gfx;
 
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class Assets {
 
@@ -20,6 +22,9 @@ public class Assets {
     public static BufferedImage logo;
     public static BufferedImage titleLives;
     public static BufferedImage titleScores;
+    public static BufferedImage gameOverBackground;
+    public static BufferedImage scoreBackground;
+    public static String path;
 
     public static void init(){
         background = ImageLoader.loadImage("/BackgroundCorr.png");
@@ -36,5 +41,18 @@ public class Assets {
         logo = ImageLoader.loadImage("/logoLeft.png");
         titleLives = ImageLoader.loadImage("/titleLives.png");
         titleScores = ImageLoader.loadImage("/titleScores.png");
+        gameOverBackground = ImageLoader.loadImage("/gameOver.png");
+        scoreBackground = ImageLoader.loadImage("/bestEver.png");
+        path = "/score.txt";
+
+        try {
+            GraphicsEnvironment ge =
+                    GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("/HELEN BG THIN ITALIC_0.OTF")));
+        } catch (IOException |FontFormatException e) {
+
+        }
+
+    //Handle exception
     }
 }

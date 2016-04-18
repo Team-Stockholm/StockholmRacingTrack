@@ -40,7 +40,6 @@ public class GameState extends State{
         this.entities.removeAll(removed);
         if (!this.player.exists()){
             StateManager.setCurrentState(new GameOverState());
-            System.exit(0);
         } else {
             List<GameObject> vehicles = this.entities.stream().filter(i->i instanceof Opponent).collect(Collectors.toList());
             List<GameObject> items = this.entities.stream().filter(i->i instanceof ExtraPoints).collect(Collectors.toList());
@@ -68,5 +67,9 @@ public class GameState extends State{
         for (GameObject vehicle : this.entities) {
             vehicle.render(graphics);
         }
+
+        graphics.setFont(new Font("HELEN BG THIN ITALIC_0", Font.PLAIN, 30));
+        graphics.setColor(Color.white);
+        graphics.drawString(String.format("%d",this.player.getPointsCollected()), 615, 485);
     }
 }

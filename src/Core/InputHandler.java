@@ -2,10 +2,9 @@ package Core;
 
 
 import Display.Display;
-import States.GameState;
-import States.MainMenuState;
-import States.State;
-import States.StateManager;
+import States.*;
+import gfx.Assets;
+import gfx.HighScoreLoader;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -61,12 +60,28 @@ public class InputHandler implements KeyListener{
         }else if (keyCode == KeyEvent.VK_LEFT){
             GameState.player.isMovingLeft = true;
         }
-//        Loading a new GameState with pressing space - starting game.
-//        else if (keyCode==KeyEvent.VK_SPACE) {
-//            if (StateManager.getCurrentState().toString().contains("MainMenuState")){
-//                StateManager.setCurrentState(new GameState() {
-//                });}
-//        }
+
+        if (StateManager.getCurrentState() instanceof GameOverState) {
+
+            if (keyCode>='A' && keyCode<='Z' && GameOverState.input.length()< 14) {
+                GameOverState.input.append((char) keyCode);
+            } else if (keyCode == KeyEvent.VK_BACK_SPACE && GameOverState.input.length()>0) {
+                GameOverState.input.deleteCharAt(GameOverState.input.length()-1);
+            } else if (keyCode == KeyEvent.VK_SPACE){
+                GameOverState.input.append(" ");
+            } else if (keyCode == KeyEvent.VK_ENTER && GameOverState.input.length() > 0) {
+                GameState.player.setName(GameOverState.input.toString());
+                GameOverState.input.setLength(0);
+                HighScoreLoader.savingHighScores(GameState.player.getName(), GameState.player.getPointsCollected());
+                StateManager.setCurrentState(new ScoreState());
+            }
+        }
+
+        if (StateManager.getCurrentState() instanceof ScoreState){
+            if (keyCode == KeyEvent.VK_SPACE){
+                StateManager.setCurrentState(new MainMenuState());
+            }
+        }
     }
 
     @Override

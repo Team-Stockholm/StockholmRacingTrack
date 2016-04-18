@@ -36,12 +36,19 @@ public class PlayerCar extends Vehicle {
         this.numberOfLives = INITIAL_NUMBER_OF_LIVES;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getPointsCollected(){
         return this.pointsCollected;
     }
 
-    public void setPointsCollected(int pointsCollected){
-        this.pointsCollected = pointsCollected;
+    public void setPointsCollected(int pointsCollected){this.pointsCollected = pointsCollected;
     }
 
     public int getNumberOfLives() {
@@ -61,8 +68,12 @@ public class PlayerCar extends Vehicle {
             this.setxCoord(this.getxCoord() + this.velocityX);
         }
 
-        if (this.getNumberOfLives() < 0){
+        if (this.getNumberOfLives() <= 0){
             this.setExists(false);
+        }
+
+        if (this.getPointsCollected() < 0){
+            this.setPointsCollected(0);
         }
     }
 
