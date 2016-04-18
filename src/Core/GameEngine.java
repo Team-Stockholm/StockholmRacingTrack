@@ -76,6 +76,7 @@ public class GameEngine implements Runnable{
         graphics.drawImage((Assets.logo), 70, 150, null);
         graphics.drawImage((Assets.titleLives), 610, 500, null);
         graphics.drawImage((Assets.titleScores), 590, 400, null);
+        graphics.drawImage((Assets.legend), 590, 0, null);
 //        graphics.
 
         if (StateManager.getCurrentState() != null){
