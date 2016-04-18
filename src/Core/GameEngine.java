@@ -22,7 +22,8 @@ public class GameEngine implements Runnable{
 
     private GameState gameState;
     private MainMenuState mainMenuState;
-    private InputHandler inputHandler;
+    private KeybordInput keybordInput;
+    private MouseInput mouseInput;
 
     private int width = 800;
     private int height = 50;
@@ -38,7 +39,8 @@ public class GameEngine implements Runnable{
     //everything ready for our game
     private void init() {
         this.display = new Display("Stockholm Racing track");
-        this.inputHandler = new InputHandler(this.display);
+        this.keybordInput = new KeybordInput(this.display);
+        this.mouseInput = new MouseInput(this.display);
 
         gameState = new GameState();
         mainMenuState = new MainMenuState();
@@ -75,8 +77,11 @@ public class GameEngine implements Runnable{
         graphics.drawImage((Assets.background), 0, height - (height * i), null);
         graphics.drawImage((Assets.logo), 70, 150, null);
         graphics.drawImage((Assets.titleLives), 610, 500, null);
+        graphics.drawImage((Assets.lives), 705, 522, null);
+        graphics.drawImage((Assets.lives), 715, 522, null);
+        graphics.drawImage((Assets.lives), 725, 522, null);
         graphics.drawImage((Assets.titleScores), 590, 400, null);
-        graphics.drawImage((Assets.legend), 590, 0, null);
+//        graphics.drawImage((Assets.legend), 590, 0, null);
 //        graphics.
 
         if (StateManager.getCurrentState() != null){
