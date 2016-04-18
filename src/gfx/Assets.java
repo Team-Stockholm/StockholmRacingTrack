@@ -23,6 +23,7 @@ public class Assets {
     public static BufferedImage titleLives;
     public static BufferedImage titleScores;
     public static BufferedImage gameOverBackground;
+    public static BufferedImage legend;
     public static BufferedImage scoreBackground;
     public static String path;
 
@@ -40,6 +41,7 @@ public class Assets {
         startScreen = ImageLoader.loadImage("/startScreen.png");
         logo = ImageLoader.loadImage("/logoLeft.png");
         titleLives = ImageLoader.loadImage("/titleLives.png");
+        legend = ImageLoader.loadImage("/legend.png");
         titleScores = ImageLoader.loadImage("/titleScores.png");
         gameOverBackground = ImageLoader.loadImage("/gameOver.png");
         scoreBackground = ImageLoader.loadImage("/bestEver.png");
