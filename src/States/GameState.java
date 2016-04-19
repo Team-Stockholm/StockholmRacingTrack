@@ -24,7 +24,7 @@ public class GameState extends State{
 
     public GameState(){
         init();
-        player = new PlayerCar("player", 31, 62, 385, 450);
+        player = new PlayerCar("player", 385, 450);
         map = new MapInitiliazer();
         this.entities = map.PopulateMap();
         this.collisionHandler = new CollisionHandler();
@@ -47,14 +47,8 @@ public class GameState extends State{
         if (!this.player.exists()){
             StateManager.setCurrentState(new GameOverState());
         } else {
-            List<GameObject> vehicles = this.entities.stream().filter(i->i instanceof Opponent).collect(Collectors.toList());
-            List<GameObject> items = this.entities.stream().filter(i->i instanceof ExtraPoints).collect(Collectors.toList());
-            if (vehicles.size() == 0)        {
-                map.generateEnemies(this.entities);
-            }
-            if (items.size() == 0){
-                map.generateItems(this.entities);
-            }
+            map.generateEnemies(this.entities);
+            map.generateItems(this.entities);
 
             for (GameObject vehicle : this.entities) {
                 vehicle.update();

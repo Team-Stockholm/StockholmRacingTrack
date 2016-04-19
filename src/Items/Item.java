@@ -19,7 +19,7 @@ public abstract class Item extends GameObject{
         }
 
     public void update(){
-        this.setyCoord(this.getyCoord() + 3);
+        this.setyCoord(this.getyCoord() + 5);
         this.getColliderBox().setBounds(this.getxCoord(), this.getyCoord(), image.getWidth(),image.getHeight());
     }
 }

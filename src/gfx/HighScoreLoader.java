@@ -17,10 +17,17 @@ public class HighScoreLoader {
         try (BufferedReader fileReader = new BufferedReader(new FileReader("resources/scores.txt"))) {
             String line;
             String[] arguments;
-
+            StringBuilder sb = new StringBuilder();
             while ((line = fileReader.readLine()) != null){
                 arguments = line.split(" ");
-                scores.put(arguments[0], Integer.parseInt(arguments[1]));
+                if (arguments.length > 2){
+                    sb.append(arguments[0] + " ");
+                    sb.append(arguments[1]);
+                    scores.put(sb.toString(), Integer.parseInt(arguments[2]));
+                    sb.append("\r\n");
+                } else {
+                    scores.put(arguments[0], Integer.parseInt(arguments[1]));
+                }
             }
         } catch (IOException ex) {
             System.out.println("Cannot read the file");

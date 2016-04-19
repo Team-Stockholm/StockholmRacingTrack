@@ -12,26 +12,14 @@ public class PlayerCar extends Vehicle {
 
     private String name;
     private int pointsCollected;
-    private int numberOfCollisions;
-
-    private int width, height;
-
     private int velocityX;
-
-
-
     private int numberOfLives;
-
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
 
-    private Rectangle playerPosition;
-
-    public PlayerCar(String name, int width, int height, int xCoord, int yCoord){
+    public PlayerCar(String name, int xCoord, int yCoord){
         super(xCoord, yCoord, Assets.player);
         this.name = name;
-        this.width = width;
-        this.height = height;
         this.velocityX = 5;
         this.numberOfLives = INITIAL_NUMBER_OF_LIVES;
     }

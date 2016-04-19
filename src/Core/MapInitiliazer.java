@@ -1,9 +1,6 @@
 package Core;
 
-import Items.Gas;
-import Items.MotorOil;
-import Items.SewerShaft;
-import Items.Wrench;
+import Items.*;
 import Vehicles.*;
 
 import java.util.ArrayList;
@@ -12,16 +9,14 @@ import java.util.Random;
 
 public class MapInitiliazer {
     private static Random Rand = new Random();
-    private final int NUMBER_OF_VEHICLES = 3;
-    private final int NUMBER_OF_ITEMS = 2;
-    private final int MAP_WIDTH = 575;
-    private final int HEIGHT = 400;
-    private final int MIN_LENGTH = 225;
+    private final int NUMBER_OF_VEHICLES = 5;
+    private final int NUMBER_OF_ITEMS = 5;
+    private final int[] coordinates = {243, 315, 387, 455, 525};
+    private int step = 0;
 
     public List<GameObject> PopulateMap()
     {
         List<GameObject> entities = new ArrayList<>();
-
         generateItems(entities);
         generateEnemies(entities);
 
@@ -38,9 +33,19 @@ public class MapInitiliazer {
 
         for (int i = 0; i <= NUMBER_OF_VEHICLES; i++)
         {
-            int currentXCoord = Rand.nextInt(MAP_WIDTH - MIN_LENGTH + 1) + MIN_LENGTH;
-            int currentYCoord = Rand.nextInt(HEIGHT - MIN_LENGTH + 1) + MIN_LENGTH;
+            int xIndex = Rand.nextInt(5);
+            int currentXCoord = coordinates[xIndex];
 
+            for (GameObject object:entities) {
+                if (object.getxCoord() == currentXCoord){
+                    xIndex = Rand.nextInt(5);
+                    currentXCoord = coordinates[xIndex];
+                    break;
+                }
+            }
+
+            step += i * 20;
+            int currentYCoord =(0 + i * 10) - step;
             int index = Rand.nextInt(enemies.size() - 0) + 0;
 
             switch (enemies.get(index)){
@@ -54,19 +59,27 @@ public class MapInitiliazer {
     }
 
     public void generateItems(List<GameObject> entities) {
-
         List<String> items= new ArrayList<>();
         items.add("Gas");
         items.add("MotorOil");
         items.add("SewerShaft");
         items.add("Wrench");
 
-        GameObject vehicle = null;
+        Item vehicle = null;
         for (int i = 0; i <= NUMBER_OF_ITEMS; i++)
         {
-            int currentXCoord = Rand.nextInt(MAP_WIDTH - MIN_LENGTH + 1) + MIN_LENGTH;
-            int currentYCoord = Rand.nextInt(HEIGHT - MIN_LENGTH + 1) + MIN_LENGTH;
+            int xIndex = Rand.nextInt(5);
+            int currentXCoord = coordinates[xIndex];
 
+            for (GameObject object:entities) {
+                if (object.getxCoord() == currentXCoord){
+                    xIndex = Rand.nextInt(5);
+                    currentXCoord = coordinates[xIndex];
+                    break;
+                }
+            }
+            step += i * 15;
+            int currentYCoord = (0 + i * 5) - step;
             int index = Rand.nextInt(items.size() - 0) + 0;
 
             switch (items.get(index)){
