@@ -21,5 +21,8 @@ public abstract class Item extends GameObject{
     public void update(){
         this.setyCoord(this.getyCoord() + 5);
         this.getColliderBox().setBounds(this.getxCoord(), this.getyCoord(), image.getWidth(),image.getHeight());
+        if (this.getyCoord() > 800){
+            this.setExists(false);
+        }
     }
 }

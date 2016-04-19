@@ -16,5 +16,8 @@ public abstract class Opponent extends Vehicle{
     public void update(){
         this.setyCoord(this.getyCoord() + 5);
         this.getColliderBox().setBounds(this.getxCoord(), this.getyCoord(), this.getImage().getWidth(),this.getImage().getHeight());
+        if (this.getyCoord() > 800){
+            setExists(false);
+        }
     }
 }

@@ -44,6 +44,7 @@ public class GameState extends State{
         this.collisionHandler.handleCollisions(this.player, this.entities);
         List<GameObject> removed = entities.stream().filter(a-> !a.exists()).collect(Collectors.toList());
         this.entities.removeAll(removed);
+        
         if (!this.player.exists()){
             StateManager.setCurrentState(new GameOverState());
         } else {
@@ -52,10 +53,6 @@ public class GameState extends State{
 
             for (GameObject vehicle : this.entities) {
                 vehicle.update();
-            }
-
-            if (entities.stream().allMatch(y->y.getyCoord() > 800)){
-                entities.clear();
             }
         }
     }
