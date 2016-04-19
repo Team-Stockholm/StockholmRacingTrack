@@ -10,6 +10,8 @@ package Core;
 
 
 public class GameEngine implements Runnable{
+
+
     public String title;
 
     private Display display;
@@ -77,9 +79,6 @@ public class GameEngine implements Runnable{
         graphics.drawImage((Assets.background), 0, height - (height * i), null);
         graphics.drawImage((Assets.logo), 70, 150, null);
         graphics.drawImage((Assets.titleLives), 610, 500, null);
-        graphics.drawImage((Assets.lives), 705, 522, null);
-        graphics.drawImage((Assets.lives), 715, 522, null);
-        graphics.drawImage((Assets.lives), 725, 522, null);
         graphics.drawImage((Assets.titleScores), 590, 400, null);
 
 //        graphics.

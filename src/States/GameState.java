@@ -71,5 +71,9 @@ public class GameState extends State{
         graphics.setFont(new Font("HELEN BG THIN ITALIC_0", Font.PLAIN, 30));
         graphics.setColor(Color.white);
         graphics.drawString(String.format("%d",this.player.getPointsCollected()), 615, 485);
+
+        for (int i = 0; i < this.player.getNumberOfLives(); i++) {
+            graphics.drawImage((Assets.lives), 705 + (i * 20), 514, null);
+        }
     }
 }
