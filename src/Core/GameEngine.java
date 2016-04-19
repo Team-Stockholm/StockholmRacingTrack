@@ -27,13 +27,7 @@ public class GameEngine implements Runnable{
     private KeybordInput keybordInput;
     private MouseInput mouseInput;
 
-    private int width = 800;
-    private int height = 50;
-    public int i = 23;
-
     public GameEngine() {
-        this.width = width;
-        this.height = height;
         this.title = title;
     }
 
@@ -53,10 +47,6 @@ public class GameEngine implements Runnable{
 
     //The method that will update all the variables
     private void tick() {
-        i--;
-        if (i <= 1){
-            i = 23;
-        }
         if (StateManager.getCurrentState() != null){
             StateManager.getCurrentState().tick();
         }
@@ -74,14 +64,6 @@ public class GameEngine implements Runnable{
         this.graphics = this.bufferStrategy.getDrawGraphics();
 
         graphics.clearRect(0, 0, Display.WIDTH, Display.HEIGHT);
-
-        //start drawing
-        graphics.drawImage((Assets.background), 0, height - (height * i), null);
-        graphics.drawImage((Assets.logo), 70, 150, null);
-        graphics.drawImage((Assets.titleLives), 610, 500, null);
-        graphics.drawImage((Assets.titleScores), 590, 400, null);
-
-//        graphics.
 
         if (StateManager.getCurrentState() != null){
             StateManager.getCurrentState().render(graphics);

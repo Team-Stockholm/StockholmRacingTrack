@@ -18,6 +18,9 @@ public class GameState extends State{
     private List<GameObject> entities;
     private MapInitiliazer map;
     private CollisionHandler collisionHandler;
+    private int width = 800;
+    private int height = 50;
+    public int i = 23;
 
     public GameState(){
         init();
@@ -33,7 +36,10 @@ public class GameState extends State{
 
     @Override
     public void tick() {
-
+        i--;
+        if (i <= 1){
+            i = 23;
+        }
         player.update();
         this.collisionHandler.handleCollisions(this.player, this.entities);
         List<GameObject> removed = entities.stream().filter(a-> !a.exists()).collect(Collectors.toList());
@@ -62,6 +68,11 @@ public class GameState extends State{
 
     @Override
     public void render(Graphics graphics) {
+
+        graphics.drawImage((Assets.background), 0, height - (height * i), null);
+        graphics.drawImage((Assets.logo), 70, 150, null);
+        graphics.drawImage((Assets.titleLives), 610, 500, null);
+        graphics.drawImage((Assets.titleScores), 590, 400, null);
         player.render(graphics);
 
         for (GameObject vehicle : this.entities) {
