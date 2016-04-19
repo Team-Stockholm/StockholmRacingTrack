@@ -1,10 +1,5 @@
-package Vehicles;
+package GameObjects.Vehicles;
 
-import Core.GameEngine;
-import States.GameState;
-import gfx.Assets;
-
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class Opponent extends Vehicle{

@@ -4,7 +4,9 @@ package Core;
         import States.GameState;
         import States.MainMenuState;
         import States.StateManager;
-        import gfx.Assets;
+        import events.KeybordInput;
+        import events.MouseInput;
+
         import java.awt.*;
         import java.awt.image.BufferStrategy;
 
@@ -46,9 +48,9 @@ public class GameEngine implements Runnable{
 
 
     //The method that will update all the variables
-    private void tick() {
+    private void update() {
         if (StateManager.getCurrentState() != null){
-            StateManager.getCurrentState().tick();
+            StateManager.getCurrentState().update();
         }
     }
 
@@ -94,7 +96,7 @@ public class GameEngine implements Runnable{
             lastTime = now;
 
             if (delta >= 1) {
-                this.tick();
+                this.update();
                 this.render();
 
                 ticks++;

@@ -8,7 +8,7 @@ public class GameOverState extends State {
     public static StringBuilder input = new StringBuilder();
 
     @Override
-    public void tick() {
+    public void update() {
 
     }
 

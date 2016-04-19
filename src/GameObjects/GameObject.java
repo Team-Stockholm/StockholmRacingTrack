@@ -1,16 +1,17 @@
-package Vehicles;
+package GameObjects;
 
 import Interfaces.Collidable;
+import Interfaces.Drawable;
+import Interfaces.Updatable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class GameObject{
+public abstract class GameObject implements Updatable, Drawable{
     private int xCoord;
     private int yCoord;
     private Rectangle colliderBox;
     private BufferedImage image;
-
     private boolean exists;
 
     public GameObject(int xCoord, int yCoord, BufferedImage image){

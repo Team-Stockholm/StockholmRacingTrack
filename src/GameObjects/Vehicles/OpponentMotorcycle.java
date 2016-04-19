@@ -1,4 +1,4 @@
-package Vehicles;
+package GameObjects.Vehicles;
 
 import gfx.Assets;
 

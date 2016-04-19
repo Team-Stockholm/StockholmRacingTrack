@@ -8,7 +8,6 @@ public class HighScoreLoader {
     public static Map<String,Integer> highScores;
     public static int lowestScore;
 
-
     public static void loadingHighScores() {
         scores = new TreeMap<>();
         highScores = new LinkedHashMap<>();
@@ -58,7 +57,5 @@ public class HighScoreLoader {
                 e.printStackTrace();
             }
         }
-
     }
-
 }

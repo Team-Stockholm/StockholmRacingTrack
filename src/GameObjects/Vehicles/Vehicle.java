@@ -1,6 +1,7 @@
-package Vehicles;
+package GameObjects.Vehicles;
 
-import java.awt.*;
+import GameObjects.GameObject;
+
 import java.awt.image.BufferedImage;
 
 public abstract class Vehicle extends GameObject {

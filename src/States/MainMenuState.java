@@ -20,7 +20,7 @@ public class MainMenuState extends State{
     }
 
     @Override
-    public void tick() {
+    public void update() {
 
     }
 

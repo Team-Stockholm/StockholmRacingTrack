@@ -3,10 +3,8 @@ package States;
 
 import Core.CollisionHandler;
 import Core.MapInitiliazer;
-import Items.ExtraPoints;
-import Vehicles.GameObject;
-import Vehicles.Opponent;
-import Vehicles.PlayerCar;
+import GameObjects.GameObject;
+import GameObjects.Vehicles.PlayerCar;
 import gfx.Assets;
 
 import java.awt.*;
@@ -35,7 +33,7 @@ public class GameState extends State{
     }
 
     @Override
-    public void tick() {
+    public void update() {
         i--;
         if (i <= 1){
             i = 23;
@@ -44,7 +42,7 @@ public class GameState extends State{
         this.collisionHandler.handleCollisions(this.player, this.entities);
         List<GameObject> removed = entities.stream().filter(a-> !a.exists()).collect(Collectors.toList());
         this.entities.removeAll(removed);
-        
+
         if (!this.player.exists()){
             StateManager.setCurrentState(new GameOverState());
         } else {

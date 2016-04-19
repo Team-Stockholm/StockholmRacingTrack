@@ -1,8 +1,6 @@
-package Items;
+package GameObjects.Items;
 
-import States.GameState;
-import Vehicles.GameObject;
-import gfx.Assets;
+import GameObjects.GameObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

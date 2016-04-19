@@ -13,7 +13,7 @@ public class ScoreState extends State{
     }
 
     @Override
-    public void tick() {
+    public void update() {
 
     }
 

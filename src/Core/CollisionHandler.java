@@ -1,12 +1,11 @@
 package Core;
 
-import Interfaces.Collidable;
-import Items.ExtraPoints;
-import Items.Item;
-import Items.Obstacle;
-import Vehicles.GameObject;
-import Vehicles.Opponent;
-import Vehicles.PlayerCar;
+import GameObjects.Items.ExtraPoints;
+import GameObjects.Items.Item;
+import GameObjects.Items.Obstacle;
+import GameObjects.GameObject;
+import GameObjects.Vehicles.Opponent;
+import GameObjects.Vehicles.PlayerCar;
 
 import java.util.List;
 
@@ -22,11 +21,11 @@ public class CollisionHandler {
                 {
                     if (entity instanceof ExtraPoints)
                     {
-                        player.setPointsCollected(player.getPointsCollected() + ((ExtraPoints) entity).getHealthPoints());
+                        player.setPointsCollected(player.getPointsCollected() + ((ExtraPoints)entity).getHealthPoints());
                     }
                     else if (entity instanceof Obstacle)
                     {
-                        player.setPointsCollected(player.getPointsCollected() - ((Obstacle) entity).getDamage());
+                        player.setPointsCollected(player.getPointsCollected() - ((Obstacle)entity).getDamage());
                     }
                 }
                 else if (entity instanceof Opponent)

@@ -1,8 +1,11 @@
 package Core;
 
-import Items.*;
-import Vehicles.*;
-
+import GameObjects.GameObject;
+import GameObjects.Items.*;
+import GameObjects.Vehicles.Opponent;
+import GameObjects.Vehicles.OpponentCar;
+import GameObjects.Vehicles.OpponentMotorcycle;
+import GameObjects.Vehicles.OpponentTruck;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

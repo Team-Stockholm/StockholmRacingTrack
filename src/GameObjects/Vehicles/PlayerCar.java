@@ -1,11 +1,8 @@
-package Vehicles;
+package GameObjects.Vehicles;
 
-import Core.GameEngine;
 import gfx.Assets;
-import org.omg.CORBA.Environment;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class PlayerCar extends Vehicle {
     private final int INITIAL_NUMBER_OF_LIVES = 3;
@@ -17,11 +14,14 @@ public class PlayerCar extends Vehicle {
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
 
+    private int count;
+
     public PlayerCar(String name, int xCoord, int yCoord){
         super(xCoord, yCoord, Assets.player);
         this.name = name;
         this.velocityX = 5;
         this.numberOfLives = INITIAL_NUMBER_OF_LIVES;
+        this.setCount(500);
     }
 
     public String getName() {
@@ -36,8 +36,7 @@ public class PlayerCar extends Vehicle {
         return this.pointsCollected;
     }
 
-    public void setPointsCollected(int pointsCollected){this.pointsCollected = pointsCollected;
-    }
+    public void setPointsCollected(int pointsCollected){this.pointsCollected = pointsCollected;}
 
     public int getNumberOfLives() {
         return numberOfLives;
@@ -45,6 +44,14 @@ public class PlayerCar extends Vehicle {
 
     public void setNumberOfLives(int numberOfLives) {
         this.numberOfLives = numberOfLives;
+    }
+
+    public int getCount() {
+        return this.count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override
@@ -63,6 +70,16 @@ public class PlayerCar extends Vehicle {
         if (this.getPointsCollected() < 0){
             this.setPointsCollected(0);
         }
+
+        if (this.getPointsCollected() != 0){
+            if (this.getPointsCollected() / this.getCount() >= 1){
+                if (this.getNumberOfLives() < 3){
+                    this.setNumberOfLives(this.getNumberOfLives() + 1);
+                }
+                this.setCount(this.getCount() + 500);
+            }
+        }
+
     }
 
     public void render(Graphics graphics) {
