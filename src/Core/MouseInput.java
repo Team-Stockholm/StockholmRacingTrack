@@ -13,14 +13,24 @@ public class MouseInput {
             @Override
             public void mouseClicked(MouseEvent e) {
                 System.out.println(StateManager.getCurrentState());
-                if (StateManager.getCurrentState().toString().contains("MainMenuState")) {
-                    StateManager.setCurrentState(new GameState());
-                }
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                int mouseX = e.getX();
+                int mouseY = e.getY();
 
+                if(StateManager.getCurrentState() instanceof MainMenuState){
+                    if (MainMenuState.newGameButton.getColliderBox().contains(mouseX, mouseY)) {
+                        StateManager.setCurrentState(new GameState());
+                    }
+                    if (MainMenuState.bestButton.getColliderBox().contains(mouseX, mouseY)) {
+                        StateManager.setCurrentState(new ScoreState());
+                    }
+                    if (MainMenuState.exitButton.getColliderBox().contains(mouseX, mouseY)) {
+                        System.exit(0);
+                    }
+                }
             }
 
             @Override

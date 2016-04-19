@@ -25,7 +25,10 @@ public class Assets {
     public static BufferedImage gameOverBackground;
 //    public static BufferedImage legend;
     public static BufferedImage scoreBackground;
-    public static String path;
+    public static BufferedImage newGameButton;
+    public static BufferedImage bestsButton;
+    public static BufferedImage exitButton;
+
 
     public static void init(){
         background = ImageLoader.loadImage("/BackgroundCorr.png");
@@ -38,13 +41,15 @@ public class Assets {
         gas = ImageLoader.loadImage("/gasoline.png");
         sewerShaft = ImageLoader.loadImage("/shaft.png");
         wrench = ImageLoader.loadImage("/wrench.png");
-        startScreen = ImageLoader.loadImage("/startScreen.png");
+        startScreen = ImageLoader.loadImage("/startScreeNoButtons.png");
         logo = ImageLoader.loadImage("/logoLeft.png");
         titleLives = ImageLoader.loadImage("/titleLives.png");
         titleScores = ImageLoader.loadImage("/titleScores.png");
         gameOverBackground = ImageLoader.loadImage("/gameOver.png");
         scoreBackground = ImageLoader.loadImage("/bestEver.png");
-        path = "/score.txt";
+        bestsButton = ImageLoader.loadImage("/BestEverButton.png");
+        newGameButton = ImageLoader.loadImage("/NewGameButton.png");
+        exitButton = ImageLoader.loadImage("/exitButton.png");
 
         try {
             GraphicsEnvironment ge =
@@ -53,7 +58,5 @@ public class Assets {
         } catch (IOException |FontFormatException e) {
 
         }
-
-    //Handle exception
     }
 }
