@@ -1,6 +1,5 @@
 package GameObjects;
 
-import Interfaces.Collidable;
 import Interfaces.Drawable;
 import Interfaces.Updatable;
 
